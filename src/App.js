@@ -1,14 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Produtos from './components/produtos';
+import Produtos from './components/Produtos'
+import styled from 'styled-components';
 
-class App extends React.Components {
+
+
+class App extends React.Component {
   render() {
+
     return (
       <div>
-
-        <Produtos />   
+        <h1>Produtos</h1>
+        
+        <Produtos  />   
 
       </div>
     );
