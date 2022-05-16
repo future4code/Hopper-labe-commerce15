@@ -10,7 +10,7 @@ const MainContainer = styled.div`
   gap: 0.5vw;
 `
 const CardProdutos = styled.div`
-  width: 35vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -18,9 +18,9 @@ const CardProdutos = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 10px;
-  img{
-    width: 20vw;
-    height: 20vw;
+  img {
+    width: 15vw;
+    height: 15vw;
   }
 `
 
@@ -32,6 +32,30 @@ const Filtros = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+`;
+
+const Destaque = styled.div`
+   height: 200px;
+   margin-bottom: 20px;
+   border: 1px solid black;
+   width: 70vw;
+`;
+
+const PrecoDestaque = styled.p`
+  font-size: 35px;
+  font-weight: bold;
+`;
+
+const ProdutoDestaque = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 30px;
+  img {
+    height: 100px;
+  }
+  align-items: center;
+  justify-content: center;
 `;
 
 const PesquisaNome = styled.input`
@@ -318,6 +342,10 @@ class Produtos extends React.Component {
         </CardProdutos>
       );
     });
+
+    const index = Math.floor(Math.random() * this.state.arrayProdutos.length)
+    const produtoDestaque = this.state.arrayProdutos[index];
+
     return (
       <div>
         <Filtros>
@@ -348,7 +376,20 @@ class Produtos extends React.Component {
             </select>
         </Filtros>
         <ProdutosECarrinho>
-          <MainContainer>{naTela}</MainContainer>
+          <MainContainer>
+            <Destaque>
+              <strong>Destaque</strong>
+              <ProdutoDestaque>
+                {produtoDestaque.imgProd}
+                <div>
+                  {produtoDestaque.nomeProduto}
+                  <PrecoDestaque>R$ {produtoDestaque.preco.toFixed(2).toString().replace(".", ",")}</PrecoDestaque>
+                </div>
+                <BotaoAdd onClick={() => this.onClickAdicionaCarrinho(produtoDestaque.id)}>Comprar</BotaoAdd>
+              </ProdutoDestaque>
+            </Destaque>
+            {naTela}
+            </MainContainer>
           <ContainerCarrinho>
             <strong>Carrinho de Compras:</strong>
             {this.state.addCarrinho.map((produto) => {
