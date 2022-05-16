@@ -4,6 +4,10 @@ import styled from 'styled-components';
 
 const Principal = styled.div`
   text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 `;
 
 class App extends React.Component {
@@ -11,7 +15,7 @@ class App extends React.Component {
 
     return (
       <Principal>
-        <h1>Produtos</h1>
+        <h1>LabeCommerce</h1>
         
         <Produtos  />   
 
